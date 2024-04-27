@@ -27,20 +27,23 @@ module EnclosureBase() {
             diameterExtender();
 
             difference() {
-            $fn=subdivisions;
+                $fn=subdivisions;
 
-            cylinder(h=controller_height, r=15);  // This is the main cylinder
-            translate([0,0, -20]) cylinder(h=controller_height * 1.5, r=12.5); // The cylinder to be subtracted. The 'translate' function is used to ensure that this cylinder is centered properly.
-            translate([
-                pcb_slot_height / 2 * (-1),
-                pcb_slot_width / 2 * (-1),
-                -10,
-            ])
-            cube([
-                pcb_slot_height,
-                pcb_slot_width,
-                controller_height * 1.2,
-            ]);
+                cylinder(h=controller_height, r=15);  // This is the main cylinder
+
+                translate([0,0, -1])
+                cylinder(h=controller_height * 2, r=12.5); // The cylinder to be subtracted. The 'translate' function is used to ensure that this cylinder is centered properly.
+
+                translate([
+                    pcb_slot_height / 2 * (-1),
+                    pcb_slot_width / 2 * (-1),
+                    -10,
+                ])
+                cube([
+                    pcb_slot_height,
+                    pcb_slot_width,
+                    controller_height + 10,
+                ]);
             }
         
             // Bottom Screw Support Right
@@ -72,6 +75,15 @@ module EnclosureBase() {
 
         translate([0, 12.55, 149])
         cylinder(h=6.5, r=led_screw_hole_diameter / 2);
+
+        //
+        // Bottom Screw Holes
+        //
+        translate([-13, 0, -1])
+        cylinder(h=7.5, r=led_screw_hole_diameter / 2);
+
+        translate([13, 0, -1])
+        cylinder(h=7.5, r=led_screw_hole_diameter / 2);
     }
 }
 
