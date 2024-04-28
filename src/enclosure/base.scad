@@ -14,33 +14,27 @@ function braceProfile(extension=0,edgeRadius=10)=translateRadiiPoints(
   [0,0]
 );
 
+
+
 module diameterExtender() {
   rotate_extrude(angle = 360, convexity = 2, $fn = subdivisions)
-    polygon(polyRound(braceProfile(), $fn));
+    polygon(polyRound(braceProfile(), $fn = subdivisions));
 }
 
 module EnclosureBase() {
     difference () {
         union () {
+            /*
             rotate([0, 180, 0])
             translate([0, 0, -155])
             diameterExtender();
-
+            */
             difference() {
-            $fn=subdivisions;
+                $fn=subdivisions;
 
-            cylinder(h=controller_height, r=15);  // This is the main cylinder
-            translate([0,0, -20]) cylinder(h=controller_height * 1.5, r=12.5); // The cylinder to be subtracted. The 'translate' function is used to ensure that this cylinder is centered properly.
-            translate([
-                pcb_slot_height / 2 * (-1),
-                pcb_slot_width / 2 * (-1),
-                -10,
-            ])
-            cube([
-                pcb_slot_height,
-                pcb_slot_width,
-                controller_height * 1.2,
-            ]);
+                cylinder(h=controller_height, r=15);  // This is the main cylinder
+                translate([0,0, -20]) cylinder(h=controller_height * 1.5, r=12.5); // The cylinder to be subtracted. The 'translate' function is used to ensure that this cylinder is centered properly.
+            
             }
         
             // Bottom Screw Support Right
@@ -57,8 +51,12 @@ module EnclosureBase() {
             diffusor_oring_mount();
 
             // Top Plate
-            translate([0, 0, 155 - 6])
-            cylinder(h=6, r=18);
+            translate([0, 0, 154])
+            cylinder(h=1.5, r=18);
+
+            // Top Plate Screw Cylinder
+            translate([0, 0, 155])
+            cylinder(h=7, r=2);
         }
 
         translate([-1 * (top_plate_cutout_height / 2), -1 * (top_plate_cutout_width / 2), 145])
@@ -67,10 +65,10 @@ module EnclosureBase() {
         //
         // LED Screw Holes
         //
-        translate([0, -12.55, 149])
+        translate([0, -12.55, 155 - 1])
         cylinder(h=6.5, r=led_screw_hole_diameter / 2);
 
-        translate([0, 12.55, 149])
+        translate([0, 12.55, 155 - 1])
         cylinder(h=6.5, r=led_screw_hole_diameter / 2);
     }
 }
