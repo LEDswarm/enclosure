@@ -16,52 +16,47 @@ function braceProfile(extension=0,edgeRadius=10)=translateRadiiPoints(
 
 module diameterExtender() {
   rotate_extrude(angle = 360, convexity = 2, $fn = subdivisions)
-    polygon(polyRound(braceProfile(), $fn));
+    polygon(polyRound(braceProfile(), 24));
 }
 
 module EnclosureBase() {
     difference () {
         union () {
-            rotate([0, 180, 0])
-            translate([0, 0, -155])
-            diameterExtender();
-
             difference() {
                 $fn=subdivisions;
 
                 cylinder(h=controller_height, r=15);  // This is the main cylinder
 
-                translate([0,0, -1])
-                cylinder(h=controller_height * 2, r=12.5); // The cylinder to be subtracted. The 'translate' function is used to ensure that this cylinder is centered properly.
-
-                translate([
-                    pcb_slot_height / 2 * (-1),
-                    pcb_slot_width / 2 * (-1),
-                    -10,
-                ])
-                cube([
-                    pcb_slot_height,
-                    pcb_slot_width,
-                    controller_height + 10,
-                ]);
-            }
-        
-            // Bottom Screw Support Right
-            translate([12, 0, 0])
-            scale([0.5, 2.0, 1])
-                cylinder(h = controller_height, r = 3.0);
+                translate([0,0, -20])
+                cylinder(h=controller_height * 1.5, r=12.5); // The cylinder to be subtracted. The 'translate' function is used to ensure that this cylinder is centered properly.
             
-            // Bottom Screw Support Left
-            translate([-12, 0, 0])
-            scale([0.5, 2.0, 1])
-                cylinder(h = controller_height, r = 3.0);
+            }
+
+            rotate([0, 180, 0])
+            translate([0, 0, -155])
+            diameterExtender();
 
             translate([0, 0, 155 - 0.5])
             diffusor_oring_mount();
 
+            // Bottom Screw Support Right
+            translate([12, 0, 0])
+            scale([0.5, 2.0, 1])
+            cylinder(h = controller_height, r = 3.0);
+            
+            // Bottom Screw Support Left
+            translate([-12, 0, 0])
+            scale([0.5, 2.0, 1])
+            cylinder(h = controller_height, r = 3.0);
+            
+
             // Top Plate
-            translate([0, 0, 155 - 6])
-            cylinder(h=6, r=18);
+            translate([0, 0, 153.5])
+            cylinder(h=1.5, r=18);
+
+            // Top Plate Screw Cylinder
+            translate([0, 0, 155])
+            cylinder(h=7, r=2);
         }
 
         translate([-1 * (top_plate_cutout_height / 2), -1 * (top_plate_cutout_width / 2), 145])
@@ -70,19 +65,19 @@ module EnclosureBase() {
         //
         // LED Screw Holes
         //
-        translate([0, -12.55, 149])
+        translate([0, -led_pcb_screw_hole_center_distance, 155 - 1])
         cylinder(h=6.5, r=led_screw_hole_diameter / 2);
 
-        translate([0, 12.55, 149])
+        translate([0, led_pcb_screw_hole_center_distance, 155 - 1])
         cylinder(h=6.5, r=led_screw_hole_diameter / 2);
 
         //
         // Bottom Screw Holes
         //
-        translate([-13, 0, -1])
+        translate([-13, 0, -2])
         cylinder(h=7.5, r=led_screw_hole_diameter / 2);
 
-        translate([13, 0, -1])
+        translate([13, 0, -2])
         cylinder(h=7.5, r=led_screw_hole_diameter / 2);
     }
 }
@@ -99,34 +94,29 @@ function topPlateCutoutGeometry(extension=0,edgeRadius=10)=translateRadiiPoints(
 
 // O-Ring diffusor attachment
 module diffusor_oring_mount() {
-/*
-    Old O-Ring Mount
-    
-    color([0.9, 0.6, 0.6])
-    translate([0, 0, 20])
-    difference() {
-        translate([0, 0, controller_height])
-        ring(34 - 0.5, 29.0, 7);
+    diffusor_flange_outer_diamater = 33.5;
+    diffusor_flange_inner_diamater = 29.0;
+    diffusor_flange_height = 6.75;
 
-        // O-Ring Cutout
-        translate([0, 0, controller_height + 2])
-        ring(
-            36,
-            30.25,
-            2.5 + 0.2
-        );
-    }
-*/
+    diffusor_groove_outer_diameter = 36;
+    diffusor_groove_inner_diameter = 30.25;
+    diffusor_groove_height = 3;
+
+
     difference() {
         translate([0, 0, 0])
-        ring(34 - 0.5, 29.0, 7);
+        ring(
+            diffusor_flange_outer_diamater,
+            diffusor_flange_inner_diamater,
+            diffusor_flange_height
+        );
 
         // O-Ring Cutout
         translate([0, 0, 2])
         ring(
-            36,
-            30.25,
-            3
+            diffusor_groove_outer_diameter,
+            diffusor_groove_inner_diameter,
+            diffusor_groove_height
         );
     }
 }

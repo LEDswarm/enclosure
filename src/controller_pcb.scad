@@ -1,9 +1,11 @@
+include <../config.scad>;
+
 module ControllerPcb () {
   union () {
-    translate([0, -(26.70 / 2), -135 - 20])
-    cube([1.0, 26.70, 135]);
+    translate([0, -(26.70 / 2), 0])
+    cube([1.0, 26.70, controller_mainboard_height]);
 
-    translate([0, -(11 / 2), -20])
+    translate([0, -(11 / 2), controller_mainboard_height])
     cube([1.0, 11, 15]);
   }
 

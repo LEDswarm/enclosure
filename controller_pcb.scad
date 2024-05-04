@@ -24,7 +24,7 @@ dwm3000_width = 23.0;
 
 usbcPort();
 
-color([0.0, 0.6, 0.1])
+color([0.8, 0.8, 0.8])
 pcb();
 
 module pcb() {
