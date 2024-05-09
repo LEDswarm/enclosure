@@ -2,7 +2,7 @@
 
 A custom 3D-printed enclosure for LEDswarm controllers, made to be printed out of resin in SLA printers.
 
-This fulfills a similar role as the original bottle blanks used to enclose the electronics of Ghoust controllers, but it has been adapted to support mounting circuit boards and diffusor pipes in a solid plastic case which holds everything in place, especially regarding the USB-C board-to-board connection between the mainboard and the LED board.
+This fulfills a similar role as the original bottle blanks used to enclose the electronics of Ghoust controllers, but the design has evolved into a curved transparent enclosure which supports mounting circuit boards and diffusor pipes onto a solid plastic case which holds everything in place, especially regarding the USB-C board-to-board connection between the mainboard and the LED board as well as the diffusor pipe.
 
 ## Features
 
