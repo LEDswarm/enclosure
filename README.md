@@ -7,6 +7,7 @@ This fulfills a similar role as the original bottle blanks used to enclose the e
 ## Features
 
 - Lengthwise PCB slot for a mainboard with board edge (straddle mount) USB-C plug
+- Water-tight sealing using flanges with o-rings
 - Top surface within the diffusor flange to mount the LED peripheral board with M1.7 screws
 - Ceiling projection using a plano-convex lens which is integrated into the top cover
 
