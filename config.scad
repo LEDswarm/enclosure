@@ -29,7 +29,7 @@ led_screw_hole_diameter = 0.83 * led_screw_diameter;
 // The height of the cylinder below the LED base plate for self-cutting screws to bore into.
 led_screw_support_height = 3.0;
 
-top_cover_screw_diameter = 1.0; // PA Philips Head Micro Screw M1.4
+top_cover_screw_diameter = 1.7; // PA Philips Head Micro Screw M1.4
 top_cover_screw_hole_diameter = 0.83 * top_cover_screw_diameter;
 top_cover_screw_support_height = 3.0;
 

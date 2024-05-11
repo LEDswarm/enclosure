@@ -4,7 +4,7 @@ include <config.scad>;
 include <src/enclosure/base.scad>;
 include <src/controller_pcb.scad>;
 //include <src/top_lens.scad>;
-//include <src/top_cover.scad>;
+include <src/top_cover.scad>;
 //include <src/diffusor.scad>;
 
 include <../NeoPixelRing/openscad/board/board.scad>;
@@ -18,6 +18,8 @@ include <../NeoPixelRing/openscad/config.scad>;
 
 color([0.8, 0.8, 0.8])
 ControllerPcb();
+
+TopCover();
 
 // 3mm Wall Thickness Measuring Cube
 // translate([0, 16.5, 155])
