@@ -1,7 +1,7 @@
 include <../lib/round_anything/polyround.scad>;
 include <../config.scad>;
 
-include <./top_lens.scad>;
+//include <./top_lens.scad>;
 
 // O-Ring diffusor attachment
 module diffusor_oring_mount() {
@@ -39,8 +39,8 @@ module TopCover() {
     [0,0]
     );
 
-    translate([0, 0, controller_height + 20 + 40 - 12])
-    TopLens();
+    //translate([0, 0, controller_height + 20 + 40 - 12])
+    //TopLens();
 
     difference () {
         translate([0, 0, controller_height + 20 + 40])
@@ -50,9 +50,9 @@ module TopCover() {
             //color([0.8, 0.8, 0.8])
             //import("./lens24mm_2_5.stl", convexity=3);
 
-            //color([0.9, 0.6, 0.6])
-            //translate([0, 0, -6.5])
-            //diffusor_oring_mount();
+            color([0.9, 0.6, 0.6])
+            translate([0, 0, -6.5])
+            diffusor_oring_mount();
 
             ring(36, 33, 1);
             difference () {
