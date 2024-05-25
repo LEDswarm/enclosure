@@ -99,8 +99,8 @@ module diffusor_oring_mount(groove_offset=0) {
     diffusor_flange_height = 6.75;
 
     diffusor_groove_outer_diameter = 36;
-    diffusor_groove_inner_diameter = 30.25 + groove_offset;
-    diffusor_groove_height = 3;
+    diffusor_groove_inner_diameter = 30.3 + groove_offset;
+    diffusor_groove_height = 2.4;
 
 
     difference() {
@@ -112,7 +112,7 @@ module diffusor_oring_mount(groove_offset=0) {
         );
 
         // O-Ring Cutout
-        translate([0, 0, 2])
+        translate([0, 0, (diffusor_flange_height - diffusor_groove_height) / 2])
         ring(
             diffusor_groove_outer_diameter,
             diffusor_groove_inner_diameter,

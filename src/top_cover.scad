@@ -65,7 +65,7 @@ module TopCover() {
             }
         }
 
-        translate([0, 19.25, controller_height + 20 + 40 - 2])
+        /*translate([0, 19.25, controller_height + 20 + 40 - 2])
         cylinder(r=top_cover_screw_diameter / 2, h=20);
 
         translate([0, 19.25, controller_height + 20 + 40 + 2])
@@ -75,7 +75,7 @@ module TopCover() {
         cylinder(r=top_cover_screw_diameter / 2, h=20);
 
         translate([0, -19.25, controller_height + 20 + 40 + 2])
-        cylinder(r=2.0, h=20);
+        cylinder(r=2.0, h=20);*/
 
         // Glue Cutout for Lens Attachment
         translate([0, 0, controller_height + 20 + 40 - 2])
