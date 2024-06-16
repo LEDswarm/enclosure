@@ -4,7 +4,6 @@ include <config.scad>;
 include <src/enclosure/base.scad>;
 include <src/controller_pcb.scad>;
 //include <src/top_lens.scad>;
-include <src/top_cover.scad>;
 //include <src/diffusor.scad>;
 
 include <../NeoPixelRing/openscad/board/board.scad>;
@@ -19,7 +18,7 @@ include <../NeoPixelRing/openscad/config.scad>;
 color([0.8, 0.8, 0.8])
 ControllerPcb();
 
-TopCover();
+//TopCover();
 
 // 3mm Wall Thickness Measuring Cube
 // translate([0, 16.5, 155])
@@ -61,8 +60,8 @@ difference() {
     cylinder(h=6.5, r=led_screw_hole_diameter / 2);
 
     // Cut-out so we can look inside
-    translate([-100, -100, -10])
-    cube([200, 200, 130 + 10]);
+    //translate([-100, -100, -10])
+    //cube([200, 200, 130 + 10]);
 }
 
 difference() {
