@@ -93,9 +93,9 @@ function topPlateCutoutGeometry(extension=0,edgeRadius=10)=translateRadiiPoints(
 );
 
 // O-Ring diffusor attachment
-module diffusor_oring_mount(groove_offset=0) {
-    diffusor_flange_outer_diamater = 33.5;
-    diffusor_flange_inner_diamater = 29.0;
+module diffusor_oring_mount(groove_offset=0.1) {
+    diffusor_flange_outer_diameter = 33.5;
+    diffusor_flange_inner_diameter = 29.0;
     diffusor_flange_height = 6.75;
 
     diffusor_groove_outer_diameter = 36;
@@ -106,8 +106,8 @@ module diffusor_oring_mount(groove_offset=0) {
     difference() {
         translate([0, 0, 0])
         ring(
-            diffusor_flange_outer_diamater,
-            diffusor_flange_inner_diamater,
+            diffusor_flange_outer_diameter,
+            diffusor_flange_inner_diameter,
             diffusor_flange_height
         );
 
