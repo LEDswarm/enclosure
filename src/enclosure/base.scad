@@ -7,7 +7,7 @@ function braceProfile(extension=0,edgeRadius=10)=translateRadiiPoints(
       [20, 5, 24],
       [15, 15, 24],
       [15, 20, 0],
-      [12, 20, 0],
+      [12 + 0.5, 20, 0], // Bottom, inner edge
       [12, 15, 24],
       [17, 5, 24],
     ],
